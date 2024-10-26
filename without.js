@@ -17,12 +17,11 @@ const assertArraysEqual = function(array1,array2){
 };
 
 const without = function(source,itemsToRemove){
-  const clone = source.slice();
-  for (let filters in itemsToRemove){
-    for(let ele in clone){
-      if (clone[ele] === itemsToRemove[filters]){
-        clone.splice(ele,1);
-      }
+  const clone = [];
+  for(let ele of source){
+    if (itemsToRemove.includes(ele) === false){
+      let push = ele;
+      clone.push(ele);
     }
   }
 return clone;
@@ -30,7 +29,7 @@ return clone;
 
 assertArraysEqual(without([1,2,3],[2]),[1,3]);
 assertArraysEqual(without(['a','b','c'],['a']),['b','c']);
-assertArraysEqual(without(['a','b', 1, 2],['a',2]),['b',1]);
+assertArraysEqual(without([1,'b',2,3],[3,'b']),[1,2]);
 
 //Test to make source array isnt modified
 const words = ["hello", "world", "lighthouse"];
