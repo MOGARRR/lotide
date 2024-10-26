@@ -10,7 +10,7 @@ const eqArrays = function(array1,array2){
   return true;
 };
 
-const assertEqualArray = function(array1,array2){
+const assestArraysEqual = function(array1,array2){
   let condition = eqArrays(array1,array2);
   return console.log( condition ? `🟢🟢🟢 Arrays are equal: [${array1}] === [${array2}]`
     : `🟥🟥🟥 Arrays are not equal: [${array1}] !== [${array2}]`);
@@ -36,10 +36,10 @@ const middle = function(array){
   }
 };
 
-assertEqualArray(middle([1,2,3,4,5,6]),[3,4]);
-assertEqualArray(middle([1,2,3,4,5,6,7]),[4]);
-assertEqualArray(middle([1,2]),[]);
-assertEqualArray(middle([1]),[]);
-assertEqualArray(middle([]),[]);
+assestArraysEqual(middle([1,2,3,4,5,6]),[3,4]);
+assestArraysEqual(middle([1,2,3,4,5,6,7]),[4]);
+assestArraysEqual(middle([1,2]),[]);
+assestArraysEqual(middle([1]),[]);
+assestArraysEqual(middle([]),[]);
 
 

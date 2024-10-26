@@ -10,20 +10,20 @@ const eqArrays = function(array1,array2){
   return true;
 };
 
-const assertEqualArray = function(array1,array2){
+const assertArraysEqual = function(array1,array2){
   let condition = eqArrays(array1,array2);
   return console.log( condition ? `🟢🟢🟢 Arrays are equal: [${array1}] === [${array2}]`
     : `🟥🟥🟥 Arrays are not equal: [${array1}] !== [${array2}]`);
 };
 
-assertEqualArray([1,2,3],[1,2,3]);
-assertEqualArray([1,2,3],[1,2,2]);
-assertEqualArray([1,2,3],[1,2,3,4]);
-assertEqualArray(['1','2','3'],['1','2','3']);
-assertEqualArray(['1','2','3'],['1','2','4']);
-assertEqualArray(['1','2','3'],['1',2,'3']);
-assertEqualArray([1],[1]);
-assertEqualArray([],[]);
+assertArraysEqual([1,2,3],[1,2,3]);
+assertArraysEqual([1,2,3],[1,2,2]);
+assertArraysEqual([1,2,3],[1,2,3,4]);
+assertArraysEqual(['1','2','3'],['1','2','3']);
+assertArraysEqual(['1','2','3'],['1','2','4']);
+assertArraysEqual(['1','2','3'],['1',2,'3']);
+assertArraysEqual([1],[1]);
+assertArraysEqual([],[]);
 
 
 
