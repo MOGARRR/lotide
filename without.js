@@ -20,7 +20,6 @@ const without = function(source,itemsToRemove){
   const clone = [];
   for(let ele of source){
     if (itemsToRemove.includes(ele) === false){
-      let push = ele;
       clone.push(ele);
     }
   }
