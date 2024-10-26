@@ -8,7 +8,7 @@ const eqArrays = function(array1,array2){
     return false;
   }
   for(let ele in array1){
-    if(array1[ele] != array2[ele]){
+    if(array1[ele] !== array2[ele]){
       return false;
     }
   }
