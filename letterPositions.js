@@ -20,7 +20,7 @@ const assertArraysEqual = function(array1,array2){
 
 const letterPositions = function(sentence){
   const result = {}
-  let splitSentence = sentence.split('');
+  const splitSentence = sentence.split('');
   for (let index in splitSentence){
     if (splitSentence[index] !== ' ')
       result.hasOwnProperty(splitSentence[index]) ? result[splitSentence[index]].push(parseInt(index)) : result[splitSentence[index]] = [parseInt(index)]; 
