@@ -4,9 +4,7 @@ const assertEqual = function(actual,expected) {
 };
 
 const countOnly = function(allItems,itemsToCount){
-  const results = {
-    item : 0
-  }
+  const results = {}
   for (let item of allItems){
     if (itemsToCount[item]){
       if(results[item]){
