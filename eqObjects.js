@@ -4,12 +4,12 @@ const assertEqual = function(actual,expected) {
     : `🟥🟥🟥 Assertion Failed: [${actual}] !== [${expected}]`);
 };
 
-const eqArrays = function(array1,array2){
-  if(array1.length !== array2.length){
+const eqArrays = function(array1,array2) {
+  if (array1.length !== array2.length) {
     return false;
   }
-  for(let ele in array1){
-    if(array1[ele] !== array2[ele]){
+  for (let ele in array1) {
+    if (array1[ele] !== array2[ele]) {
       return false;
     }
   }
@@ -17,17 +17,21 @@ const eqArrays = function(array1,array2){
 };
 
 //current function
-const eqObjects = function(obj1,obj2){
-  for( const keys1 in obj1){
-    let value1 = obj1[keys1];
-    if (Array.isArray(value1)){
-      if (eqArrays(value1,obj2[keys1]) !== true){
-        return false;
-      }else{
+const eqObjects = function(obj1,obj2) {
+  const keys1 = Object.keys(obj1).sort();
+  const keys2 = Object.keys(obj2).sort();
+  if (eqArrays(keys1,keys2) !== true) {
+    return false;
+  }
+  for (let key of keys1) {
+    if (Array.isArray(obj1[key])) {
+      if (eqArrays(obj1[key],obj2[key])) {
         continue;
+      } else {
+        return false;
       }
     }
-    if(obj2[keys1] !== value1){
+    if (obj1[key] !== obj2[key]) {
       return false;
     }
   }
@@ -40,27 +44,38 @@ const coffee1 = {
   roast:'light',
   size:'large',
   flavors:['fruity','floral']
-}
+};
 
 const coffee2 = {
   size: 'small',
   roast: 'dark',
   flavors: ['nutty','sweet']
   
-}
-const coffee3 ={
+};
+const coffee3 = {
   roast:'light',
   size: 'large',
   flavors: ['fruity','sour']
-}
-const coffee4 ={
+};
+const coffee4 = {
   roast: 'dark',
-  size : 'small',
-  flavors: ['nutty','sweet']
-}
+  flavors: ['nutty','sweet'],
+  size : 'small'
+};
+const coffee5 = {
+  size:'large',
+  flavors:['fruity','floral'],
+  brew: 'pour over',
+  roast:'light'
+};
 
 
 assertEqual(eqObjects(coffee1,coffee2),false);
 assertEqual(eqObjects(coffee2,coffee4),true);
 assertEqual(eqObjects(coffee1,coffee3), false);
+assertEqual(eqObjects(coffee1,coffee5), true);
 
+const obj1 = { a: 1, b: 2 };
+const obj2 = { a: 1, b: 2, c: 3 };
+
+assertEqual(eqObjects(obj1,obj2),false);
