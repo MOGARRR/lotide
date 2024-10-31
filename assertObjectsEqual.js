@@ -36,7 +36,7 @@ const eqObjects = function(obj1,obj2) {
 //current function
 const assertObjectsEqual = function(actual,expected){
   const inspect = require("util").inspect;
-  return console.log(inspect(actual) === inspect(expected) ? `🟢🟢🟢 Assertion Passed: [${inspect(actual)}] === [${inspect(expected)}]`
+  return console.log( actual === expected ? `🟢🟢🟢 Assertion Passed: [${inspect(actual)}] === [${inspect(expected)}]`
     : `🟥🟥🟥 Assertion Failed: [${inspect(actual)}] !== [${inspect(expected)}]`);
 };
 //
@@ -47,9 +47,9 @@ const objA = { a: '1', b: 2 }
 const objB = { b: 2, a: '1' }
 const objC = { c: 2, a: '1' }
 
-assertObjectsEqual(objA,objA);
-assertObjectsEqual(objA,objB);
-assertObjectsEqual(objB,objC);
-assertObjectsEqual(objC,objC);
+assertObjectsEqual(eqObjects(objA,objA),true);
+assertObjectsEqual(eqObjects(objA,objB),true);
+assertObjectsEqual(eqObjects(objB,objC),false);
+assertObjectsEqual(eqObjects(objC,objC),true);
 
 
