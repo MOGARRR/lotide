@@ -19,63 +19,34 @@ const eqArrays = function(array1,array2) {
 //current function
 const eqObjects = function(obj1,obj2) {
   const keys1 = Object.keys(obj1).sort();
+  const value1 = Object.values(obj1).sort();
   const keys2 = Object.keys(obj2).sort();
+  const value2 =  Object.values(obj2).sort();
+
   if (eqArrays(keys1,keys2) !== true) {
     return false;
-  }
-  for (let key of keys1) {
-    if (Array.isArray(obj1[key])) {
-      if (eqArrays(obj1[key],obj2[key])) {
-        continue;
-      } else {
+  };
+
+  for (let item in value1){
+    if (typeof(value1[item]) === 'object'){
+      if(Array.isArray(value1[item])){
+        if (eqArrays(value1[item], value2[item]) !== true){
+          return false;
+        }
+      }
+      if(eqObjects(value1[item],value2[item]) !== true) {
         return false;
       }
-    }
-    if (obj1[key] !== obj2[key]) {
-      return false;
-    }
-  }
+    } else {
+      if (value1[item] !== value2[item]){
+        return false;
+      }
+    };
+  };
   return true;
 };
-
 // test cases
-const coffee1 = {
-  brew: 'pour over',
-  roast:'light',
-  size:'large',
-  flavors:['fruity','floral']
-};
-
-const coffee2 = {
-  size: 'small',
-  roast: 'dark',
-  flavors: ['nutty','sweet']
-  
-};
-const coffee3 = {
-  roast:'light',
-  size: 'large',
-  flavors: ['fruity','sour']
-};
-const coffee4 = {
-  roast: 'dark',
-  flavors: ['nutty','sweet'],
-  size : 'small'
-};
-const coffee5 = {
-  size:'large',
-  flavors:['fruity','floral'],
-  brew: 'pour over',
-  roast:'light'
-};
-
-
-assertEqual(eqObjects(coffee1,coffee2),false);
-assertEqual(eqObjects(coffee2,coffee4),true);
-assertEqual(eqObjects(coffee1,coffee3), false);
-assertEqual(eqObjects(coffee1,coffee5), true);
-
-const obj1 = { a: 1, b: 2 };
-const obj2 = { a: 1, b: 2, c: 3 };
-
-assertEqual(eqObjects(obj1,obj2),false);
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }),true); // => true
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }),false); // => false
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }),false); // => false
+assertEqual(eqObjects({ a: { z: {s:{n:1}} , h : {a: 2}}, b: {d:2} },{ a: { z: {s:{n:1}} , h : {a: 2}}, b: {d:2} }),true); // => true

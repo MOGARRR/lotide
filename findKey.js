@@ -1,10 +1,10 @@
 const assertEqual = function(actual,expected) {
-  return console.log(actual === expected ? `🟢🟢🟢 Assertion Passed: [${actual}] === [${expected}]`
-    : `🟥🟥🟥 Assertion Failed: [${actual}] !== [${expected}]`);
+  return console.log(actual === expected ? `🟢🟢🟢 Assertion Passed: "${actual}" === "${expected}"`
+    : `🟥🟥🟥 Assertion Failed: "${actual}" !== "${expected}"`);
 };
 
 const findKey = (obj,callback) => {
-  let key;
+
   //get the keys of the object as an array
   const objKeys = Object.keys(obj);
   //loop through object keys
@@ -16,10 +16,9 @@ const findKey = (obj,callback) => {
     // use if to see if the value is true for the callback
     if (callback(objValue)){
       //if it is return the key form earlier to the empty variable at the start
-      return key = keyName;
+      return keyName;
     }
   }
-  return key;
 }
 
 
