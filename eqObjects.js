@@ -19,8 +19,8 @@ const eqArrays = function(array1,array2) {
 //current function
 const eqObjects = function(obj1,obj2) {
   const keys1 = Object.keys(obj1).sort();
-  const value1 = Object.values(obj1).sort();
-  const keys2 = Object.keys(obj2);
+  const value1 = Object.values(obj1);
+  const keys2 = Object.keys(obj2).sort();
   const value2 =  Object.values(obj2);
   if (eqArrays(keys1,keys2) !== true) {
     return false;
