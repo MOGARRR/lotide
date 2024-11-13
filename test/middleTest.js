@@ -1,8 +1,8 @@
-const assestArraysEqual = require('../assertArraysEqual');
+const assertArraysEqual = require('../assertArraysEqual');
 const middle = require('../middle');
 
-assestArraysEqual(middle([1,2,3,4,5,6]),[3,4]);
-assestArraysEqual(middle([1,2,3,4,5,6,7]),[4]);
-assestArraysEqual(middle([1,2]),[]);
-assestArraysEqual(middle([1]),[]);
-assestArraysEqual(middle([]),[]);
+assertArraysEqual(middle([1,2,3,4,5,6]),[3,4]);
+assertArraysEqual(middle([1,2,3,4,5,6,7]),[4]);
+assertArraysEqual(middle([1,2]),[]);
+assertArraysEqual(middle([1]),[]);
+assertArraysEqual(middle([]),[]);
