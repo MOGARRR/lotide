@@ -11,7 +11,7 @@ const eqArrays = function(array1,array2) {
 
   for (let ele in array1) {
     if (Array.isArray(array1[ele])) {
-      if (eqArrays(array1[ele],array2[ele]) !== true) {
+      if (!eqArrays(array1[ele],array2[ele])) {
         return false;
       }
     } else {
@@ -34,3 +34,4 @@ assertEqual(eqArrays([1],[1]),true);
 assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]),true); // true
 assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]),false); // false
 assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]),false); // false
+assertEqual(eqArrays([[2, 3], ['4',[false]]], [[2, 3], ['4',[false]]]),true); // true
