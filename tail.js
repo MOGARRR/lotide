@@ -2,7 +2,8 @@ const tail = function(array) {
   if (array.length === 1 ||0){
     return [];
   }
-  array.shift();
-  return array;
+  let tail = array.splice();
+  tail.shift();
+  return tail;
 };
 module.exports = tail;
