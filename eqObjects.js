@@ -1,47 +1,25 @@
-//imported functions
-const assertEqual = function(actual,expected) {
-  return console.log(actual === expected ? `🟢🟢🟢 Assertion Passed: [${actual}] === [${expected}]`
-    : `🟥🟥🟥 Assertion Failed: [${actual}] !== [${expected}]`);
-};
-
-const eqArrays = function(array1,array2) {
-  if (array1.length !== array2.length) {
-    return false;
-  }
-  for (let ele in array1) {
-    if (array1[ele] !== array2[ele]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-//current function
+const eqArrays = require('./eqArrays');
 const eqObjects = function(obj1,obj2) {
   const keys1 = Object.keys(obj1).sort();
   const keys2 = Object.keys(obj2).sort();
-  if (eqArrays(keys1,keys2) !== true) {
+  if (eqArrays(keys1,keys2) !== true) { // if array of keys arent the same itll return false
     return false;
   }
   for (let key of keys1) {
-    if (typeof(obj1[key]) === 'object') {
+    if (typeof(obj1[key]) === 'object') { // checks if its an object or array
       if (Array.isArray(obj1[key])) {
-        if (eqArrays(obj1[key], obj2[key]) !== true) {
+        if (eqArrays(obj1[key], obj2[key]) !== true) { // uses imported eqarray to check if array is equal
           return false;
         }
-      } else if (eqObjects(obj1[key],obj2[key]) !== true) {
+      } else if (eqObjects(obj1[key],obj2[key]) !== true) { // calls function again to handle nested objects
         return false;
       }
     } else {
-      if (obj1[key] !== obj2[key]) {
+      if (obj1[key] !== obj2[key]) { // compares values of key between objects
         return false;
       }
     }
   }
   return true;
 };
-// test cases
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }),true); // => true
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }),false); // => false
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }),false); // => false
-assertEqual(eqObjects({ a: { z: {s:{n:1}} , h : {a: 2}}, b: {d:2} },{ a: { z: {s:{n:1}} , h : {a: 2}}, b: {d:2} }),true); // => true
+module.exports = eqObjects;
