@@ -1,7 +1,8 @@
 const tail = function(array) {
-  let tail = array.slice();
-  tail.shift();
-  return tail;
+  if (array.length === 1 ||0){
+    return [];
+  }
+  array.shift();
+  return array;
 };
-
 module.exports = tail;

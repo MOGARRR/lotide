@@ -1,25 +1,20 @@
-const assertEqual = require('../assertEqual');
 const tail = require('../tail');
+const assert = require('chai').assert;
 
-const test1 = [1,2,3];
-const temp2 = ['hi','bye','sigh'];
-const test3 = [];
-const test4 = [1];
-
-assertEqual(tail(test1)[0],2);
-assertEqual(tail(test1)[1],3);
-assertEqual(tail(test1).length,test1.length - 1);
-console.log(test1);
-console.log('--1--');
-
-assertEqual(tail(temp2)[0],'bye');
-assertEqual(tail(temp2)[1],'sigh');
-assertEqual(tail(temp2).length,temp2.length - 1);
-console.log(temp2);
-console.log('--2--');
-
-assertEqual(tail(test3).length,0);
-console.log('--3--');
-
-assertEqual(tail(test4).length,0);
-console.log('--4--');
+describe('#tail', () => {
+  it('returns [2,3] for [1,2,3]', () => {
+    assert.deepEqual(tail([1,2,3]), [2,3]);
+  });
+  it('returns ["bye","sigh"] for ["hi","bye,"sigh"]', () => {
+    assert.deepEqual(tail(['hi','bye','sigh']), ['bye','sigh']);
+  });
+  it('returns [true,false] for [false,true,false]', () => {
+    assert.deepEqual(tail([false,true,false]), [true,false]);
+  });
+  it('returns empty array for []', () => {
+    assert.deepEqual(tail([]), []);
+  });
+  it('returns empty array for single value[1]', () => {
+    assert.deepEqual(tail([1]), []);
+  });
+});
