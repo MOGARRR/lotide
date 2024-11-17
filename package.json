@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
-  "version": "1.0.0",
-  "description": "",
-  "main": "assertArraysEqual.js",
+  "name": "@mogar/lotide",
+  "version": "1.0.1",
+  "description": "Helper functions",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/MOGARRR/lotide.git"
   },
-  "author": "",
+  "author": "@mogar",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MOGARRR/lotide/issues"
